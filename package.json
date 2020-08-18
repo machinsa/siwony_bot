@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/machinsa/siwony_bot.git"
+    "url": "git+https://github.com/siwony/siwony_bot.git"
   },
   "keywords": [
     "discord",
@@ -18,9 +18,9 @@
   "author": "siwony_",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/machinsa/siwony_bot/issues"
+    "url": "https://github.com/siwony/siwony_bot/issues"
   },
-  "homepage": "https://github.com/machinsa/siwony_bot#readme",
+  "homepage": "https://github.com/siwonya/siwony_bot#readme",
   "dependencies": {
     "discord.js": "^12.3.1"
   }
