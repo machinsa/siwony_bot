@@ -11,11 +11,15 @@ client.on('ready', () => {
     client.user.setActivity('siwony_bot!', { type: 'PLAYING' })
 });
 
-//디코 명령어
+//메세지가 왔을때
 client.on('message', msg => {
+    if(msg.author.bot){return}//봇이면 리턴
+    else if(msg.content.indexOf(PREFIX) !== 0){return}//접두사 안붙이면 리턴
+
+    let commend = msg.content.substring(PREFIX.length, msg.length);    //접두사 제외한 단어 자르기
+    console.log(commend);
     //인삿말
-    let hello_idx = hello_li.indexOf(msg.content)
-    if (msg.content === PREFIX + hello_li[hello_idx]) {
+    if (commend === "하로" || commend === "안녕" || commend === "안뇽") {
         let rand_num = Math.floor(Math.random() * 3 ) + 1; 
         switch (rand_num){
             case 1 :
@@ -30,7 +34,7 @@ client.on('message', msg => {
         }
     }
     //구르기
-    else if(msg.content === PREFIX + "굴러" || msg.content === PREFIX + "굴러!"){
+    else if(commend === "굴러" || commend === "굴러!"){
         let rand_num = Math.floor(Math.random() * 2 ) + 1; 
         switch (rand_num){
             case 1 :
@@ -41,7 +45,7 @@ client.on('message', msg => {
         }
     }
     //시워니 드립
-    else if(msg.content === PREFIX + "시원해" || msg.content === PREFIX + "시원스쿨"){
+    else if(commend === PREFIX + "시원해" || commend === PREFIX + "시원스쿨"){
         let rand_num = Math.floor(Math.random() * 2) + 1; 
         switch (rand_num){
             case 1 :
