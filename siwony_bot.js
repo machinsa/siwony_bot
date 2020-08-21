@@ -76,6 +76,17 @@ client.on('message', msg => {
                 msg.channel.send("겨울특강 없다고요....?");
         }
     }
+    else if(commend === "야발"){
+        let rand_num = Math.floor(Math.random() * 2) + 1; 
+        switch (rand_num){
+            case 1 :
+                msg.channel.send("야발");
+                break;
+            case 2 :
+                msg.channel.send("캌...퉷!!");
+                break;
+        }
+    }
     else{   //도움말이 없얼떄
         let rand_num = Math.floor(Math.random() * 3) + 1; 
         switch (rand_num){
