@@ -3,6 +3,7 @@ const client = new Discord.Client();    //client 는 봇
 const PREFIX = "시워나 "
 const config = require('./config.json');
 
+//learn_commends.json 불러오기
 //로그인
 client.login(config.token);
 client.on('ready', () => {
@@ -15,9 +16,17 @@ client.on('ready', () => {
 client.on('message', msg => {
     if(msg.author.bot){return}//봇이면 리턴
     else if(msg.content.indexOf(PREFIX) !== 0){return}//접두사 안붙이면 리턴
-    let command = msg.content.substring(PREFIX.length, msg.length);    //접두사 제외한 단어 자르기
-    console.log(command);
+    let command = msg.content.substring(PREFIX.length, msg.length);    //접두사 제외한 단어 자르기   접두사 부터 마지막 인덱스까지 자름()
+    console.log("커맨드: " + command);
+
+    //배워  문자열 자르기
     let user_request;   let bot_response;
+    if(command.indexOf("배워") == 0){ 
+        let learn_command = command.split(":");     //:를 기준으로 문자열 자름
+        user_request = learn_command[0].replace("배워 ", "");   //"배워 를" 잘라주기 위한것 배울 키워드 저장
+        bot_response = learn_command[1];        //시워니가 말할 내용을 저장하는것
+    }
+
     //도움말
     if(command === "도움말" || command === "help" || command === "커맨드"){
         const embed = new Discord.MessageEmbed()
@@ -66,10 +75,11 @@ client.on('message', msg => {
         msg.channel.send(fuxx[rand_num]);
     }
     else if(command === `배워 ${user_request}:${bot_response}`){
-        
+        console.log("유저 명령어: " + user_request + "    봇 대답: " + bot_response);
+        msg.channel.send("아직 구현을 못했어요 ㅜ....");
     }
     else{   //도움말이 없얼떄
-        let none_command = ['.....?', '(갸웃...?', '그게뭐에요....?', '그게뭔대 씹덕아ㅏ!'];
+        let none_command = ['.....?', '(갸웃...?', '그게뭐에요....?'];
         let rand_num = Math.floor(Math.random() * none_command.length );
         msg.channel.send(none_command[rand_num]);
     }
